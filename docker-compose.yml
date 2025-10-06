@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend #evita tener que crear la imagen cada cambio
+    #en el docker-cimage: express_backend:1.0   # la imagen que ya contrui
+    image: eldioni/docker-backend:1.2
+    container_name: express_backend
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_USER=myuser
+      - DB_PASS=mypassword
+      - DB_NAME=mydb
+      - DB_HOST=db
+      - DB_PORT=5432
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend #evita tener que crear la imagen cada cambio
+    #image: nginx_frontend:1.0    # la imagen que ya construi
+    image: eldioni/docker-frontend:1.2
+    container_name: react_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    platform: linux/amd64
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  postgres_data:
