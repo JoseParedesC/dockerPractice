@@ -9,7 +9,22 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: mydb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U admin"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - name: Checkout code
@@ -30,8 +45,8 @@ jobs:
           context: ./backend
           push: true
           tags: |
-            eldioni/docker-backend:1.2
-            eldioni/docker-backend:${{ github.run_number }}
+            eldioni/docker-practice/docker-backend:1.2
+            eldioni/docker-practice/docker-backend:${{ github.run_number }}
 
       - name: Build and push frontend
         uses: docker/build-push-action@v6
@@ -39,5 +54,14 @@ jobs:
           context: ./frontend
           push: true
           tags: |
-            eldioni/docker-frontend:1.2
-            eldioni/docker-frontend:${{ github.run_number }}
+            eldioni/docker-practice/docker-frontend:1.2
+            eldioni/docker-practice/docker-frontend:${{ github.run_number }}
+
+      - name: Pull official PostgreSQL image
+        run: docker pull postgres:15
+
+      - name: Retag image with your Docker Hub namespace
+        run: docker tag postgres:15 eldioni/docker-practice/postgres:15
+
+      - name: Push image to Docker Hub
+        run: docker push eldioni/docker-practice/postgres:15
