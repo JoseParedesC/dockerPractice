@@ -64,4 +64,4 @@ jobs:
         run: docker tag postgres:15 eldioni/postgres:15
 
       - name: Push image to Docker Hub
-        run: docker push eldioni/postgres:15`                                                                                                                                                                                                                                                                                                                                                                           
+        run: docker push eldioni/postgres:15                                                                                                                                                                                                                                                                                                                                                                           
