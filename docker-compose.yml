@@ -3,6 +3,9 @@ version: "3.9"
 services:
   backend:
     build: ./backend #evita tener que crear la imagen cada cambio
+    networks:
+      - back_net
+      - share_net
     #en el docker-cimage: express_backend:1.0   # la imagen que ya contrui
     image: eldioni/docker-backend:1.2
     container_name: express_backend
@@ -23,6 +26,9 @@ services:
 
   frontend:
     build: ./frontend #evita tener que crear la imagen cada cambio
+    networks:
+      - share_net
+      - front_net #no se esta utilizando (configurar para microservicios y agregar mas dependencias depends_on)
     #image: nginx_frontend:1.0    # la imagen que ya construi
     image: eldioni/docker-frontend:1.2
     container_name: react_frontend
@@ -34,6 +40,8 @@ services:
 
   db:
     image: postgres:15
+    networks:
+      - back_net
     platform: linux/amd64
     container_name: postgres_db
     restart: always
