@@ -79,20 +79,20 @@ jobs:
       - name: Deploy to Cloud Run database
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service: docker-gcp-service
+          service: docker-database-service
           region: us-central1
           image: docker.io/eldioni/postgres:15
       
       - name: Deploy to Cloud Run backend
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service: docker-gcp-service
+          service: docker-backend-service
           region: us-central1
           image: docker.io/eldioni/docker-backend:${{ github.run_number }}
 
       - name: Deploy to Cloud Run frontend
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service: docker-gcp-service
+          service: docker-frontend-service
           region: us-central1
           image: docker.io/eldioni/docker-frontend:${{ github.run_number }}
