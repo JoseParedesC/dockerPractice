@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mystical-nimbus-357317",
+  "private_key_id": "da81410b4d53c35b26230906f206c25242977138",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4W5wPOq4jolFy\nqvZkN8saO5fuXMMViWLPekr45UNr/yz263LYGOK7rxGzjxEkyhau3A6trPkwW4RW\nz5xFWIUdrLH2cYPisCzOgxVLjKuzgWgmftXLqA8FufmCrSIrceLIRoVtZnfCPrqF\nKlMT+gprxWQZwnQUXKazYpuc/xXmZteHiV0Kj7U5tTOCRRf2gWtznfY2xeZksIbf\nZLuK7opuO5nHDOuaRcIrhF0Xp1AJ2waq4zHtTv+UYv74SO8+sWjmtu4iBcFUOpoV\nO00MhRagAxctZaHVFl9+QvRIhlwFBcaQhrVWwHApMo3CBBwLzwPXKCaqLwUsjlvc\nZdzrzkVZAgMBAAECggEAHqJKWlV73jv4oL871gdXXnKMmnUbjZaYrrU5hAZEn8t1\nI0qYeMQZ2OoMXPPm+2ABSOkUH1PgzGJIqUwyQWumIvoxUCwoqCByMZaikT08wsU8\nEzl8OS0h4ee3SDmQtftknbbqMPWX7NUTlVElIOqplKLmMUmYlFGY+bHm/b19XB1u\nb9PAzKfk1YCGDkTHayVGPTc/xXXISkkJ/tmQQUF/pxOLjnXUW2AuWjljlSVu6e5U\nG5+o63MhocKJ5kB5ZiYAMf+N1gDpHsNp3NZCjhLPLQCz+AMUBNhwiQEXBukm0+VM\nFv2QxBeX4nmoGZGrK56q1i1aezO251AYA5aXT0faIQKBgQDhUv9G0eEc7nCYjK8x\noKn0o0sEukvTYvR8nvl5UKmyBThdcMlfggebbLm+UKVTp89Xk/oDHn8uqbmpvWZf\niKYJZ9Ic8Yq0qpUwZA5wORLr99N2RnckKqymhHBlCYQ0y/ogulbFKx1YxnI+YYrV\nIOOPMKs71OYNd6jlI71GNKRG/QKBgQDRdNovyc2LDMCYivtF02dwvLsDPdDG4wyS\nOTBegwIDysbmWGTcsrkylWx/4CMhZjNpRb5u0SlO8c3HLWH7XLqXldfkScHsLrwb\nT6l34Ce2KB5NzwXnZ9P+DgxLQvQaCKnbDTQg1vQZi/6jpaOe5o0VqLF3HVr4250f\nX7DXpaWcjQKBgGC1/+2Erct+KAPB9nwlimz/HXbVAzCiu281yLwiPAO1q+CnRTdi\nFyPFwd+Gu78xOpRLZjaqg0oi/RZ2vZbpjuJgllVn8vHieZBAkdXnGVEAmNmeGwsB\n6gK6u4cSU5VZq20arZ2JCNqOqoBN24noyOMvr39JvMgxAOQAt/+HHq99AoGASFT6\nJBakjKhSulsEexCOYDhMvMnUF1rBNJ3bPkgvoe+c0F8mNbDik71WQrK8bwRELM6Q\n/OPuR/zo+yeI9q0HIuH0NDnkZhOdkjDobSVTkWw5StV7THZmlw1y4Wq1sWfcgHEG\n13Bjy4602P6SioVDo38mCeRxTg9JK1R4VYA2uOECgYEAg+7RFINHIKQ/o3LAlE3I\nWTPEgybk0gKMo0eU4pFEmtWTPg2j/h7r42mtd7sx9F6MlWrdnQzvf9TsD5OIALAI\nYSxQ9SGn50sJL+TeBrAuSLLbkQ1iXXELAV+P8nh22LihXwTsP6nihv+9KvseG4/Q\nDy+qntP3W3XuOWMaJ55FF3Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "github-deployer@mystical-nimbus-357317.iam.gserviceaccount.com",
+  "client_id": "111825731313945792822",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-deployer%40mystical-nimbus-357317.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
