@@ -64,4 +64,19 @@ jobs:
         run: docker tag postgres:15 eldioni/postgres:15
 
       - name: Push image to Docker Hub
-        run: docker push eldioni/postgres:15                                                                                                                                                                                                                                                                                                                                                                           
+        run: docker push eldioni/postgres:15
+
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy miapp-backend \
+            --image=docker.io/miusuario/miapp-backend:latest \
+            --region=us-central1 \
+            --platform=managed \
+            --allow-unauthenticated
