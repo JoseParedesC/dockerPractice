@@ -77,25 +77,22 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Deploy to Cloud Run database
-        run: |
-          gcloud run deploy postgres \
-            --image=docker.io/eldioni/postgres:15 \
-            --region=us-central1 \
-            --platform=managed \
-            --allow-unauthenticated
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: docker-gcp-service
+          region: us-central1
+          image: docker.io/eldioni/postgres:15
       
       - name: Deploy to Cloud Run backend
-        run: |
-          gcloud run deploy docker-backend \
-            --image=docker.io/eldioni/docker-backend:${{ github.run_number }} \
-            --region=us-central1 \
-            --platform=managed \
-            --allow-unauthenticated
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: docker-gcp-service
+          region: us-central1
+          image: docker.io/eldioni/docker-backend:${{ github.run_number }}
 
       - name: Deploy to Cloud Run frontend
-        run: |
-          gcloud run deploy docker-frontend \
-            --image=docker.io/eldioni/docker-frontend:${{ github.run_number }} \
-            --region=us-central1 \
-            --platform=managed \
-            --allow-unauthenticated
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: docker-gcp-service
+          region: us-central1
+          image: docker.io/eldioni/docker-frontend:${{ github.run_number }}
