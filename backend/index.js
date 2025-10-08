@@ -3,6 +3,8 @@ import pkg from "pg";
 
 const { Pool } = pkg;
 
+const port = process.env.PORT
+
 const app = express();
 app.use(express.json());
 
@@ -26,6 +28,6 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("🚀 Backend corriendo en http://localhost:5000");
 });
