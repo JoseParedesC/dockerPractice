@@ -1,0 +1,55 @@
+# ===============================
+# Archivos del sistema y editor
+# ===============================
+.vscode/
+
+
+# ===============================
+# Archivos de dependencias
+# ===============================
+node_modules/
+packages/
+dist/
+build/
+out/
+
+# ===============================
+# Archivos de entorno / credenciales
+# ===============================
+
+
+# ===============================
+# Docker
+# ===============================
+# Archivos generados automáticamente
+
+
+# Imágenes o archivos temporales locales
+
+
+# ===============================
+# Sistemas operativos
+# ===============================
+# macOS
+
+# Windows
+
+
+# Linux
+
+
+# ===============================
+# Compilados / binarios (si usas .NET, Go o Python)
+# ===============================
+
+
+# ===============================
+# GitHub Actions y CI/CD
+# ===============================
+# Logs o temporales de ejecución local
+
+
+# ===============================
+# Otros
+# ===============================
+
