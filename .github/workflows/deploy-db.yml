@@ -2,7 +2,7 @@ name: Deploy PostgreSql to Cloud SQL
 
 on:
   workflow_run:
-    workflows: ["Deploy Docker Images to Cloud Run"]
+    workflows: ["Build and Push Docker Images"]
     types:
       - completed
 
