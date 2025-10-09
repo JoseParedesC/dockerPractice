@@ -47,3 +47,5 @@ jobs:
       - name: Run init SQL
         run: |
           gcloud sql connect postgresql-cloudsql --user=admin --quiet < database/init.sql
+
+          
