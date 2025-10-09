@@ -46,7 +46,7 @@ jobs:
           push: true
           tags: |
             eldioni/docker-backend:1.2
-            eldioni/docker-backend:${{ github.run_number }}
+            eldioni/docker-backend:10
 
       - name: Build and push frontend
         uses: docker/build-push-action@v6
@@ -55,7 +55,7 @@ jobs:
           push: true
           tags: |
             eldioni/docker-frontend:1.2
-            eldioni/docker-frontend:${{ github.run_number }}
+            eldioni/docker-frontend:10
 
       - name: Pull official PostgreSQL image
         run: docker pull postgres:15

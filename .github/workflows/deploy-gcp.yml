@@ -27,12 +27,14 @@ jobs:
         with:
           service: backend-service
           region: us-central1
-          image: docker.io/eldioni/docker-backend:${{ github.run_number }}
+          image: docker.io/eldioni/docker-backend:10
+          # image: docker.io/eldioni/docker-backend:${{ github.run_number }}
 
       - name: Deploy frontend
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: frontend-service
           region: us-central1
-          image: docker.io/eldioni/docker-frontend:${{ github.run_number }}
+          image: docker.io/eldioni/docker-frontend:10
+          # image: docker.io/eldioni/docker-frontend:${{ github.run_number }}
           
