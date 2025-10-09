@@ -29,7 +29,8 @@ app.get("/api/products", async (req, res) => {
 });
 
 app.get("/api/prueba", async (req, res) => {
-    res.json({ message: "Conexión exitosa a Backend" });
+  console.log("Conexión exitosa a Backend");
+  res.json({ message: "Conexión exitosa a Backend" });
 });
 
 app.listen(port, () => {
