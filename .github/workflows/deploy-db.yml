@@ -29,6 +29,7 @@ jobs:
             --database-version=POSTGRES_15 \
             --tier=db-f1-micro \
             --region=us-central1 || echo "Instance already exists"
+            --root-password="${{ secrets.DB_ROOT_PASSWORD }}"
 
       # Crear base de datos
       - name: Create database
