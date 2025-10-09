@@ -45,6 +45,17 @@ jobs:
             --password="${{ secrets.DB_PASSWORD }}" || echo "User exists"
 
       # Subir script y ejecutarlo en Cloud SQL
+        # Habilita el cliente de PostgreSQL
+        # Abre túnel temporal hacia la instancia con gcloud
       - name: Run init SQL
+        env:
+          DB_USER: admin
+          DB_PASS: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: my_database
+          INSTANCE: postgresql-cloudsql
         run: |
-          gcloud sql connect postgresql-cloudsql --user=admin --password=${{ secrets.DB_PASSWORD }} --quiet < database/init.sql
+          sudo apt-get update && sudo apt-get install -y postgresql-client
+
+          gcloud sql connect $INSTANCE --user=$DB_USER --quiet -- \
+            bash -c "PGPASSWORD=$DB_PASS psql -U $DB_USER -d $DB_NAME -f database/init.sql"
+
