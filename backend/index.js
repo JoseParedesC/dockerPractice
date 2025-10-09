@@ -29,5 +29,5 @@ app.get("/api/products", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("🚀 Backend corriendo en http://localhost:5000");
+  console.log("🚀 Backend corriendo en http://localhost:8080");
 });
