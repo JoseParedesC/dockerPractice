@@ -28,8 +28,8 @@ jobs:
           gcloud sql instances create postgresql-cloudsql \
             --database-version=POSTGRES_15 \
             --tier=db-f1-micro \
-            --region=us-central1 || echo "Instance already exists"
-            --root-password="${{ secrets.DB_ROOT_PASSWORD }}"
+            --region=us-central1 \
+            --root-password="${{ secrets.DB_ROOT_PASSWORD }}" || echo "Instance already exists"
 
       # Crear base de datos
       - name: Create database
