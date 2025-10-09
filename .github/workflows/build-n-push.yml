@@ -65,3 +65,5 @@ jobs:
 
       - name: Push image to Docker Hub
         run: docker push eldioni/postgres:15
+
+        

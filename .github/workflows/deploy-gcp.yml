@@ -35,3 +35,4 @@ jobs:
           service: frontend-service
           region: us-central1
           image: docker.io/eldioni/docker-frontend:${{ github.run_number }}
+          
