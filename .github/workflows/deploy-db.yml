@@ -46,4 +46,4 @@ jobs:
       # Subir script y ejecutarlo en Cloud SQL
       - name: Run init SQL
         run: |
-          gcloud sql connect postgresql-cloudsql --user=admin --quiet < init/init.sql
+          gcloud sql connect postgresql-cloudsql --user=admin --quiet < database/init.sql
