@@ -17,22 +17,21 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Ruta de prueba base de datos
+// Ruta de prueba
 app.get("/api/products", async (req, res) => {
   try {
     const result = await pool.query("SELECT codigo, nombre, presentacion, descripcion FROM productos");
     res.json({ message: "Conexión exitosa a PostgreSQL", rows: result.rows });
   } catch (err) {
     console.error(err);
-    res.json({ message: "Error en la base de datos " + error });
+    res.status(500).json({ error: "Error en la base de datos" });
   }
 });
 
 app.get("/api/prueba", async (req, res) => {
   console.log("Conexión exitosa a Backend");
-  res.json({ message: "Conexión exitosa a Backend" });
 });
 
 app.listen(port, () => {
-  console.log("🚀 Backend corriendo en http://localhost:8080");
+  console.log("🚀 Backend corriendo en http://localhost:8080 🤔" );
 });
