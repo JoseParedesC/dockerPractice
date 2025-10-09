@@ -17,7 +17,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Ruta de prueba
+// Ruta de prueba base de datos
 app.get("/api/products", async (req, res) => {
   try {
     const result = await pool.query("SELECT codigo, nombre, presentacion, descripcion FROM productos");
@@ -26,6 +26,10 @@ app.get("/api/products", async (req, res) => {
     console.error(err);
     res.json({ message: "Error en la base de datos " + error });
   }
+});
+
+app.get("/api/prueba", async (req, res) => {
+    res.json({ message: "Conexión exitosa a Backend" });
 });
 
 app.listen(port, () => {
