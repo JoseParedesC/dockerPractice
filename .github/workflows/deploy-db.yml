@@ -1,0 +1,49 @@
+name: Deploy PostgreSql to Cloud SQL
+
+on:
+  workflow_run:
+    workflows: ["Deploy Docker Images to Cloud Run"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud Platform
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Setup to Cloud Run
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+       # Crear instancia de Cloud SQL si no existe
+      - name: Create Cloud SQL Instance
+        run: |
+          gcloud sql instances create postgresql-cloudsql \
+            --database-version=POSTGRES_15 \
+            --tier=db-f1-micro \
+            --region=us-central1 || echo "Instance already exists"
+
+      # Crear base de datos
+      - name: Create database
+        run: |
+          gcloud sql databases create my_database \
+            --instance=postgresql-cloudsql || echo "Database already exists"
+
+      # Crear usuario
+      - name: Create user
+        run: |
+          gcloud sql users create admin \
+            --instance=postgresql-cloudsql \
+            --password="${{ secrets.DB_PASSWORD }}" || echo "User exists"
+
+      # Subir script y ejecutarlo en Cloud SQL
+      - name: Run init SQL
+        run: |
+          gcloud sql connect postgresql-cloudsql --user=admin --quiet < init/init.sql
