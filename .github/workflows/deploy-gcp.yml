@@ -30,6 +30,16 @@ jobs:
           image: docker.io/eldioni/docker-backend:6
           # image: docker.io/eldioni/docker-backend:
 
+      - name: Deploy backend
+        run: |
+          gcloud run deploy backend-service \
+            --image=docker.io/eldioni/docker-backend:6 \
+            --region=us-central1 \
+            --platform=managed \
+            --allow-unauthenticated \
+            --add-cloudsql-instances=mystical-nimbus-357317:us-central1:postgresql-cloudsql \
+            --set-env-vars=DB_HOST=/cloudsql/mystical-nimbus-357317:us-central1:postgresql-cloudsql,DB_USER=admin,DB_PASS=${{ secrets.DB_PASSWORD }},DB_NAME=my_database
+
       - name: Deploy frontend
         uses: google-github-actions/deploy-cloudrun@v2
         with:
