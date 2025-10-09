@@ -15,8 +15,8 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DB_USER=admin
-      - DB_PASS=postgresql
+      - DB_USER=myuser
+      - DB_PASS=mypassword
       - DB_NAME=mydb
       - DB_HOST=db
       - DB_PORT=5432

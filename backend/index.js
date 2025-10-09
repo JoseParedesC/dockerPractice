@@ -10,10 +10,10 @@ app.use(express.json());
 
 // Conexión a PostgreSQL
 const pool = new Pool({
-  user: "admin",
+  user: "myuser",
   host: "db", // nombre del servicio en docker-compose
   database: "mydb",
-  password: "postgresql",
+  password: "mypassword",
   port: 5432,
 });
 
