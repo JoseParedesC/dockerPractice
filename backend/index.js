@@ -31,6 +31,6 @@ app.get("/api/prueba", async (req, res) => {
   console.log("Conexión exitosa a Backend");
 });
 
-app.listen(port, () => {
-  console.log("🚀 Backend corriendo en http://localhost:8080 🤔" );
+app.listen(5000, () => {
+  console.log("🚀 Backend corriendo en http://localhost:5000 🤔" );
 });

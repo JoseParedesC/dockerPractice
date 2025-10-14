@@ -3,17 +3,14 @@ version: "3.9"
 services:
   backend:
     build: ./backend #evita tener que crear la imagen cada cambio
-    networks:
-      - back_net
-      - share_net
-    #en el docker-cimage: express_backend:1.0   # la imagen que ya contrui
-    image: eldioni/docker-backend:1.2
+    #en el docker-image: express_backend:1.0   # la imagen que ya contrui
+    image: eldioni/docker-backend:6
     container_name: express_backend
     restart: always
     depends_on:
       - db
     ports:
-      - "8080:8080"
+      - "5000:5000"
     environment:
       - DB_USER=admin
       - DB_PASS=postgresql
@@ -26,28 +23,23 @@ services:
 
   frontend:
     build: ./frontend #evita tener que crear la imagen cada cambio
-    networks:
-      - share_net
-      - front_net #no se esta utilizando (configurar para microservicios y agregar mas dependencias depends_on)
     #image: nginx_frontend:1.0    # la imagen que ya construi
-    image: eldioni/docker-frontend:1.2
+    image: eldioni/docker-frontend:6
     container_name: react_frontend
     restart: always
     ports:
-      - "8080:8080"
+      - "3000:80"
     depends_on:
       - backend
 
   db:
     image: postgres:15
-    networks:
-      - back_net
     platform: linux/amd64
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: postgresql
       POSTGRES_DB: mydb
     ports:
       - "5432:5432"
