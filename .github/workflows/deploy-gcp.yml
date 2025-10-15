@@ -33,7 +33,7 @@ jobs:
       - name: Deploy backend
         run: |
           gcloud run deploy backend-service \
-            --image=docker.io/eldioni/docker-backend:6 \
+            --image=docker.io/eldioni/docker-backend:${{ github.sha }} \
             --region=us-central1 \
             --platform=managed \
             --allow-unauthenticated \
@@ -45,6 +45,6 @@ jobs:
         with:
           service: frontend-service
           region: us-central1
-          image: docker.io/eldioni/docker-frontend:6
+          image: docker.io/eldioni/docker-frontend:${{ github.sha }}
           # image: docker.io/eldioni/docker-frontend:
           
