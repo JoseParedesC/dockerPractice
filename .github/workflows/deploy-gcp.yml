@@ -22,13 +22,13 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      - name: Deploy backend
-        uses: google-github-actions/deploy-cloudrun@v2
-        with:
-          service: backend-service
-          region: us-central1
-          image: docker.io/eldioni/docker-backend:6
-          # image: docker.io/eldioni/docker-backend:
+      # - name: Deploy backend
+      #   uses: google-github-actions/deploy-cloudrun@v2
+      #   with:
+      #     service: backend-service
+      #     region: us-central1
+      #     image: docker.io/eldioni/docker-backend:6
+      #     # image: docker.io/eldioni/docker-backend:
 
       - name: Deploy backend
         run: |
