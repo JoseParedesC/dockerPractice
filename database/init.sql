@@ -1,13 +1,3 @@
-
--- Crear tabla ventas
-CREATE TABLE IF NOT EXISTS ventas (
-    id SERIAL PRIMARY KEY,
-    fecha DATETIME NOT NULL,
-    codigo_factura VARCHAR(50) NOT NULL,
-    vendedor VARCHAR(50),
-    comprador VARCHAR(50)
-);
-
 -- Crear tabla productos
 CREATE TABLE IF NOT EXISTS productos (
     id SERIAL PRIMARY KEY,
@@ -17,13 +7,22 @@ CREATE TABLE IF NOT EXISTS productos (
     descripcion VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS ventas_items (
-    id SERIAL PRIMARY KEY,
-    id_venta INT,
-    id_producto INT,
-    FOREIGN KEY (id_venta) REFERENCES ventas(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id)
-);
+-- -- Crear tabla ventas
+-- CREATE TABLE IF NOT EXISTS ventas (
+--     id SERIAL PRIMARY KEY,
+--     fecha DATETIME NOT NULL,
+--     codigo_factura VARCHAR(50) NOT NULL,
+--     vendedor VARCHAR(50),
+--     comprador VARCHAR(50)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS ventas_items (
+--     id SERIAL PRIMARY KEY,
+--     id_venta INT,
+--     id_producto INT,
+--     FOREIGN KEY (id_venta) REFERENCES ventas(id),
+--     FOREIGN KEY (id_producto) REFERENCES productos(id)
+-- );
 
 -- Insertar datos iniciales
 INSERT INTO productos (codigo, nombre, presentacion, descripcion) VALUES
