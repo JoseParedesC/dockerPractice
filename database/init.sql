@@ -27,6 +27,11 @@ CREATE TABLE IF NOT EXISTS ventas_items (
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 );
 
+
+ALTER TABLE ventas
+ADD CONSTRAINT unique_nro_factura UNIQUE (codigo_factura);
+
+
 ALTER TABLE ventas_items
 ADD CONSTRAINT unique_venta_producto UNIQUE (id_venta, id_producto);
 
