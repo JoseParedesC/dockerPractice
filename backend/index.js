@@ -11,13 +11,14 @@ const app = express();
 // Configurar CORS para permitir el dominio del frontend
 const allowedOrigins = [
   "http://localhost:3000", // para desarrollo local
-  "https://frontend-service-129342308367.us-central1.run.app/" // URL real de tu frontend en Cloud Run
+  "https://frontend-service-129342308367.us-central1.run.app" // URL real de tu frontend en Cloud Run
 ];
 
 app.use(
   cors({
     origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
