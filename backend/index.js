@@ -35,7 +35,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Ruta de prueba
+// ruta get productos
 app.get("/api/products", async (req, res) => {
   try {
     const result = await pool.query("SELECT codigo, nombre, presentacion, descripcion FROM productos");
@@ -46,6 +46,30 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+// ruta get detalle de ventas
+app.get("/api/ventas_details", async (req, res) => {
+  try {
+    const result = await pool.query(`SELECT codigo_factura
+    , vendedor
+    , nombre
+    , presentacion
+    , descripcion
+    , cantidad
+    , precio_unitario
+    , subtotal 
+  FROM ventas_items 
+    INNER JOIN productos ON productos.id = ventas_items.id_producto 
+    INNER JOIN ventas ON ventas.id = ventas_items.id_venta
+  `);
+    res.json({ message: "Conexión exitosa a PostgreSQL", rows: result.rows });
+  } catch (err) {
+    res.json({ message: err });
+    console.error(err);
+  }
+});
+
+
+// Ruta de prueba
 app.get("/api/prueba", async (req, res) => {
   res.json({ message: "Conexión exitosa a Backend" });
   console.log("Conexión exitosa a Backend");
