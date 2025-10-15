@@ -21,9 +21,9 @@ function App() {
     <div style={{ padding: "2rem" }}>
       <h1>🚀 Frontend React con Nginx - JdParedesC</h1>
       <div>HOLA </div>
-      <pre>{JSON.stringify(prueba, null, 2)}</pre>
+      <pre>{JSON.stringify(prueba, `No hay conexion al backend\n${API_URL}`, 2)}</pre>
       <hr></hr>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(data, "No hay conexion a la base de datos", 2)}</pre>
     </div>
   );
 }
