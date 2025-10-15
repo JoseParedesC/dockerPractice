@@ -1,0 +1,42 @@
+name: Deploy Docker Images to Cloud Run Frontend
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker Image Frontend"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud Platform
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Setup to Cloud Run
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      # - name: Deploy backend
+      #   run: |
+      #     gcloud run deploy backend-service \
+      #       --image=docker.io/eldioni/docker-backend:${{ github.sha }} \
+      #       --region=us-central1 \
+      #       --platform=managed \
+      #       --allow-unauthenticated \
+      #       --add-cloudsql-instances=mystical-nimbus-357317:us-central1:postgresql-cloudsql \
+      #       --set-env-vars=DB_HOST=/cloudsql/mystical-nimbus-357317:us-central1:postgresql-cloudsql,DB_USER=admin,DB_PASS=${{ secrets.DB_PASSWORD }},DB_NAME=my_database
+
+      - name: Deploy frontend
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: frontend-service
+          region: us-central1
+          image: docker.io/eldioni/docker-frontend:${{ github.sha }}
+          # image: docker.io/eldioni/docker-frontend:
+          

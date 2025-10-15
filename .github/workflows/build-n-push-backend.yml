@@ -1,8 +1,11 @@
-name: Build and Push Docker Images
+name: Build and Push Docker Image Backend
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/build-n-push-backend.yml'
   # También puedes agregar tags para versionar imágenes
   # tags:
   #   - 'v*.*.*'
@@ -48,21 +51,12 @@ jobs:
             eldioni/docker-backend:1.2
             eldioni/docker-backend:${{ github.sha }}
 
-      - name: Build and push frontend
-        uses: docker/build-push-action@v6
-        with:
-          context: ./frontend
-          push: true
-          tags: |
-            eldioni/docker-frontend:1.2
-            eldioni/docker-frontend:${{ github.sha }}
+      # - name: Pull official PostgreSQL image
+      #   run: docker pull postgres:15
 
-      - name: Pull official PostgreSQL image
-        run: docker pull postgres:15
+      # - name: Retag image with your Docker Hub namespace
+      #   run: docker tag postgres:15 eldioni/postgres:15
 
-      - name: Retag image with your Docker Hub namespace
-        run: docker tag postgres:15 eldioni/postgres:15
-
-      - name: Push image to Docker Hub
-        run: docker push eldioni/postgres:15
+      # - name: Push image to Docker Hub
+      #   run: docker push eldioni/postgres:15
 

@@ -1,10 +1,11 @@
 name: Deploy PostgreSql to Cloud SQL
 
 on:
-  workflow_run:
-    workflows: ["Build and Push Docker Images"]
-    types:
-      - completed
+  push:
+    branches: [ main ]
+    paths:
+      - 'database/**'
+      - '.github/workflows/deploy-db.yml'
 
 jobs:
   deploy:
