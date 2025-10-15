@@ -4,17 +4,18 @@ function App() {
   const API_URL = import.meta.env.VITE_APP_API_URL
   const [prueba, setDataP] = useState(null);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`${API_URL}/api/prueba`) // Nginx redirige al backend cuando esta configurado el proxy en el nginx.conf /api
       .then(res => res.json())
       .then(setDataP)
-      .catch(console.error);
+      .catch(setError);
 
     fetch(`${API_URL}/api/products`) // Nginx redirige al backend
       .then(res => res.json())
       .then(setData)
-      .catch(console.error);
+      .catch(setError);
   }, []);
 
   return (
@@ -26,6 +27,7 @@ function App() {
       <a href="https://backend-service-129342308367.us-central1.run.app/api/prueba">{API_URL}/api/prueba</a>
       <hr></hr>
       <pre>{JSON.stringify(data, "No hay conexion a la base de datos", 2)}</pre>
+      <pre>{JSON.stringify(error, "No hay conexion a la base de datos", 2)}</pre>
     </div>
   );
 }

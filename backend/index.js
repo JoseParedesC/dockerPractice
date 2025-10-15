@@ -30,7 +30,7 @@ app.use(express.json());
 const pool = new Pool({
   user: "admin",
   host: "db", // nombre del servicio en docker-compose
-  database: "mydb",
+  database: "my_database",
   password: "postgresql",
   port: 5432,
 });
@@ -41,6 +41,7 @@ app.get("/api/products", async (req, res) => {
     const result = await pool.query("SELECT codigo, nombre, presentacion, descripcion FROM productos");
     res.json({ message: "Conexión exitosa a PostgreSQL", rows: result.rows });
   } catch (err) {
+    res.json({ message: err });
     console.error(err);
   }
 });
