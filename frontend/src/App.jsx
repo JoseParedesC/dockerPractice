@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 
 function App() {
+  const API_URL = process.env.REACT_APP_API_URL
   const [prueba, setDataP] = useState(null);
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/api/prueba") // Nginx redirige al backend
+    fetch(`${API_URL}/api/prueba`) // Nginx redirige al backend cuando esta configurado el proxy en el nginx.conf /api
       .then(res => res.json())
       .then(setDataP)
       .catch(console.error);
 
-      fetch("/api/products") // Nginx redirige al backend
+      fetch(`${API_URL}/api/products`) // Nginx redirige al backend
       .then(res => res.json())
       .then(setData)
       .catch(console.error);
