@@ -61,7 +61,7 @@ app.get("/api/ventas_details", async (req, res) => {
     INNER JOIN productos ON productos.id = ventas_items.id_producto 
     INNER JOIN ventas ON ventas.id = ventas_items.id_venta
   `);
-    res.json({ message: "Conexión exitosa a PostgreSQL", rows: result.rows });
+    res.json({ message: "Resultado de Consulta", rows: result.rows });
   } catch (err) {
     res.json({ message: err });
     console.error(err);
