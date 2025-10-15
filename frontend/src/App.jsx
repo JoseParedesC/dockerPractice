@@ -30,7 +30,7 @@ function App() {
       <pre>{JSON.stringify(prueba, `No hay conexion al backend`, 2)}</pre>
       <hr />
       <pre>{JSON.stringify(prueba2)}</pre>
-      <a>{API_URL}/api/prueba</a>
+      <a href="https://backend-service-129342308367.us-central1.run.app/api/prueba">{API_URL}/api/prueba</a>
       <hr></hr>
       <pre>{JSON.stringify(data, "No hay conexion a la base de datos", 2)}</pre>
     </div>
