@@ -14,20 +14,20 @@ jobs:
   build-and-push:
     runs-on: ubuntu-24.04
 
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: postgresql
-          POSTGRES_DB: my_database
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U admin"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+    # services:
+    #   postgres:
+    #     image: postgres:15
+    #     env:
+    #       POSTGRES_USER: admin
+    #       POSTGRES_PASSWORD: postgresql
+    #       POSTGRES_DB: my_database
+    #     ports:
+    #       - 5432:5432
+    #     options: >-
+    #       --health-cmd="pg_isready -U admin"
+    #       --health-interval=10s
+    #       --health-timeout=5s
+    #       --health-retries=5
 
     steps:
       - name: Checkout code
