@@ -6,7 +6,6 @@ const { Pool } = pkg;
 const port = process.env.PORT || 8080
 
 const app = express();
-app.use(express.json());
 
 
 // Configurar CORS para permitir el dominio del frontend
