@@ -1,5 +1,6 @@
 import express from "express";
 import pkg from "pg";
+import cors from "cors";
 
 const { Pool } = pkg;
 
