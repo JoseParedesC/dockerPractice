@@ -29,7 +29,7 @@ app.use(express.json());
 // Conexión a PostgreSQL
 const pool = new Pool({
   user: "admin",
-  host: "db", // nombre del servicio en docker-compose
+  host: "/cloudsql/mystical-nimbus-357317:us-central1:postgresql-cloudsql", // nombre del servicio en docker-compose
   database: "my_database",
   password: "postgresql",
   port: 5432,
