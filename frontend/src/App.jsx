@@ -28,7 +28,7 @@ function App() {
     <div style={{ padding: "2rem" }}>
       <h1>🚀 Frontend React con Nginx - JdParedesC</h1>
       <div>HOLA </div>
-      <pre>{JSON.stringify(prueba, `No hay conexion al backend`, 2)}</pre>
+      <pre>{JSON.stringify(prueba, `No hay conexion al backend `, 2)}</pre>
       <hr />
       <a href="https://backend-service-129342308367.us-central1.run.app/api/prueba">{API_URL}/api/prueba</a>
       <hr></hr>
