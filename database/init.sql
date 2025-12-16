@@ -64,3 +64,4 @@ INSERT INTO ventas_items (id_venta, id_producto, cantidad, precio_unitario, subt
 (4, 4, 3, 5.50, 16.50),   -- 3 arroces
 (5, 1, 1, 12.50, 12.50)  -- 1 café
 ON CONFLICT (id_venta, id_producto) DO NOTHING;
+
